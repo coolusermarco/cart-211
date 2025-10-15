@@ -1,6 +1,22 @@
-body{font-family: Arial, Helvetica, sans-serif;
-    padding: 0;
-    margin: 0;
+body{
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 100,
+    "GRAD" 0,
+    "XOPQ" 96,
+    "XTRA" 468,
+    "YOPQ" 79,
+    "YTAS" 750,
+    "YTDE" -203,
+    "YTFI" 738,
+    "YTLC" 514,
+    "YTUC" 712;
+   /* padding: 0;
+    margin: 0; */
  
 }
 
@@ -124,5 +140,51 @@ article figure figcaption{margin-top: 5px;
 
 table img{max-width: 100%;
     max-height: 100%;
+
+}
+
+@media (max-width: 400px)
+{nav {margin: 0 auto;
+    margin-bottom: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    line-height: 30px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 4px solid black;
+    background: black;
+    z-index: 1000;
+    color:white;
+
+
+    }
+
+nav a {color: white;
+}
+
+h1{margin-top: 50px;
+
+}
+
+#wrapper {margin-top: 50px;
+        position: relative;
+        width: 90%;
+        margin: 0 auto;
+        float: none;
+}
+
+footer{margin-top: 40px;
+    font-size: 12px;
+}
+
+.books{grid-template-columns: auto auto;
+    gap: 16px;
+
+}
+
 
 }
