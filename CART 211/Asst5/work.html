@@ -46,11 +46,19 @@
         </div>
 
         <div class="menu1">
-        <a href="index.html">INDEX</a><br>
-        <a href="index.html">STORIES</a><br>
-        <a href="#">ABOUT</a><br>
+        <button class="close-menu">&times;</button>
+        <a href="storie1.html" class="menu1">STORIES</a>
+        <a href="#" class="menu1">SERIES</a>
+        <a href="index.html" class ="menu1_active">ABOUT</a>
+        
         </div>
+        <!-- burger button mobile-->
+        <div class="hamburger-menu">
+            <button>
+                <span class="fa fa-bars"></span>
+            </button>
 
+        </div>
     </nav>
 
     
@@ -173,5 +181,24 @@
  </footer>
 
             </div>
+            <!-- script for the hamburger menu-->
+                <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerButton = document.querySelector('.hamburger-menu button');
+            const closeButton = document.querySelector('.close-menu');
+            const menu1 = document.querySelector('.menu1');
+
+            // Gestion de l'ouverture du menu
+            hamburgerButton.addEventListener('click', () => {
+                menu1.classList.add('menu-deployed');
+            });
+
+            // Gestion de la fermeture du menu
+            closeButton.addEventListener('click', () => {
+                menu1.classList.remove('menu-deployed');
+            });
+        });
+    </script>
+    
         </body>
     </html>
