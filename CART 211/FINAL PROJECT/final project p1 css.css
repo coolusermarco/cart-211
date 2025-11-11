@@ -1,0 +1,129 @@
+/* reference: https://css-tricks.com/almanac/properties/b/backdrop-filter/
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-shadow
+https://www.youtube.com/watch?v=srvUrASNj0s
+https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries
+https://www.youtube.com/watch?v=jx5jmI0UlXU
+ */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000; 
+  font-family: 'Cinzel', serif;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; 
+  display: block;
+}
+
+body {
+  background: url("backgroundp1.png") no-repeat center center fixed;
+  background-size: contain;
+  image-rendering: pixelated;
+  background-color: #cbe6f7; 
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed;       
+  top: 0;
+  left: 0;
+  width: 100%;           
+  z-index: 10;           
+  background: rgba(0, 0, 0, 0.4); 
+  text-align: center;
+  padding: 15px 0;
+  backdrop-filter: blur(6px); }
+
+#overlay {
+  position: relative;
+  z-index: 2;
+  padding-top: 6vh;
+  color: #eaeaea;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
+
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 10px;
+  font-size: 1.1em;
+  transition: color 0.3s;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+nav a:hover {
+  color: #ffef9f;
+}
+
+/* content area */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  padding: 0 10%;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 0.4em;
+  color: #fdfdfd;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #f3e9bb;
+  margin-bottom: 0.2em;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+h3 {
+  font-style: italic;
+  color: #f2e7af;
+  font-size: 1.1em;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+p {
+  max-width: 700px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  color: #fff8dc;
+  line-height: 1.6;
+  margin-top: 1.5em;
+  font-size: 1em;
+}
+
+/* footer */
+footer {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  color: #fff8dc;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* responsive fix */
+@media (max-width: 768px) {
+  body {
+    background-size: cover; /* mobile can safely stretch */
+  }
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.2em; }
+  p { font-size: 0.95em; padding: 15px; }
+  nav a { display: inline-block; margin: 5px; }
+}

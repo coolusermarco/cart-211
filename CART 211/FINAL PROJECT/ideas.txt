@@ -1,0 +1,26 @@
+OVERALL FOR THE EXPERIENCE: Each pages will have a themed feature/minigame. Once u reach the 4th or 5th page, the themes will completely shift,
+No more magical/fantasycore browsing, ill try to make pages 4-9 hard to browse or just overall annoying
+I changed my mind, i want now to make a storytelling-rpg like experience, i had a lot of fun... and hard time making this! but its worth the researches
+Now that i've implemented everything I've been expecting, except for some features like clicking to make a goblin appear and ask for a cookie etc...
+During class ill work on pages 3-5, it'll be quick because I've already got every ressources I need as a template in my two first pages.
+
+Pages 3-9 or 4-9 i dont rlly remmeber will be inside a dungeon, or inside a really dark gloomy place, and they'll try to steal ur private informations
+
+PRIVATE INFOS: You need to collect them throughout your adventure, i'll add those features later this week. 
+
+I hope to make something really fun and metaphorical.
+
+LOT OF INSPO FROM THE BRAND'S "Hound Archive"'s website: https://houndarchives.com/
+
+USAGE OF GEN AI TO FIX BIG ISSUES WITH THE CANVAS OR POSITIONING OF EACH BUBBLES IMPLEMENTED
+
+PAGE 1: I wanna implement clicks, mini games within the page, an interactive experience
+reference: https://www.youtube.com/watch?v=16PncZlSNds
+reference for javascript: i took inspo of some of my work from cart 253
+css: some of the work from our previous assignments in cart 211
+
+PAGE 2: 
+
+refs: https://dev.to/tiaeastwood/super-simple-css-animation-for-fade-in-on-page-load-2p8m
+https://www.tutorialspoint.com/css/css_animation_fade_in_up_big.htm
+https://www.sliderrevolution.com/resources/css-animated-gradient/

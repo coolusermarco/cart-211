@@ -1,0 +1,116 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Cinzel', serif;
+  color: #1b1b1b;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+body {
+  background: url("backgroundp2.png") no-repeat center center fixed;
+  background-size: contain;
+  image-rendering: pixelated;
+  background-color: #e4efe7;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: block;
+}
+
+/* --- Overlapping nav --- */
+nav {
+  position: fixed;        
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;               
+  background: rgba(255, 255, 255, 0.4); /* translucent white */
+  backdrop-filter: blur(6px); /* glassy effect */
+  text-align: center;
+  padding: 15px 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 15px;
+  font-size: 1.1em;
+  transition: color 0.3s;
+  text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.6);
+}
+
+nav a:hover {
+  color: #3b5e3b;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  padding: 0 10%;
+  margin-top: 80px; 
+  text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.7);
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 0.4em;
+  color: #1a1a1a;
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.9);
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #2e2e2e;
+  margin-bottom: 0.2em;
+  text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.8);
+}
+
+h3 {
+  font-style: italic;
+  color: #3b3b3b;
+  font-size: 1.1em;
+  text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.8);
+}
+
+p {
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #1b1b1b;
+  line-height: 1.6;
+  margin-top: 1.5em;
+  font-size: 1em;
+}
+
+/* --- Footer --- */
+footer {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+  text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* responsive fix */
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+  }
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.2em; }
+  p { font-size: 0.95em; padding: 15px; }
+  nav a { display: inline-block; margin: 5px; }
+}
