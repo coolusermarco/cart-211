@@ -24,3 +24,7 @@ PAGE 2:
 refs: https://dev.to/tiaeastwood/super-simple-css-animation-for-fade-in-on-page-load-2p8m
 https://www.tutorialspoint.com/css/css_animation_fade_in_up_big.htm
 https://www.sliderrevolution.com/resources/css-animated-gradient/
+
+
+PAGE 4:
+refs goblins: 
