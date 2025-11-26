@@ -37,5 +37,7 @@ when u click, instead of text appearing, eyes will pop up, kind of snake eyes th
 
 PAGE 5 Dungeon p2: still the snake eyes, this time u can hear what they say (harassing u by asking for ur infos)
 
-PAGE 6 Abandonned Garden: this time they'll appear randomly, by popping up, goblins have wings, u can eliminate them by clicking on them
+PAGE 6 Underworld: this time they'll appear randomly, by popping up, goblins have wings, u can eliminate them by clicking on them
+
+PAGE 7 Abandonned Garden: 
 

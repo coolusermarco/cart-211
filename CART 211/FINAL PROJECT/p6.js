@@ -13,25 +13,20 @@ let mageImg;
 let mage2Img;
 let bgMusic;
 
-let whisperTexts = [
-  "The soil hums with old names, best left buried...",
-  "Something watches from beneath the petals.",
-  "You hear it breathing, slow and patient.",
-  "Every path leads somewhere you shouldn't go.",
-  "The flowers whisper, but not in words you know.",
-  "Roots curl around the memories of the lost.",
-  "A shadow stirs where no wind should move.",
-  "You step softly… but the garden already knows you.",
-  "The vines remember more than they should.",
-  "Light bends differently here, as if afraid."
-];
+let goblins = [];
+let goblinImg;
+let maxGoblins = 5; 
+let spawnInterval = 180; 
+
 
 function preload() {
-  bgImg = loadImage("backgroundp5.jpg");
+  bgImg = loadImage("backgroundp6.jpg");
   mageImg = loadImage("mage.png");
   mage2Img = loadImage("mage.png");
   characterImg = loadImage("boy.png");
   bgMusic = loadSound("musicpage2.mp3");
+
+  goblinImg = loadImage("goblin.png");
 }
 
 function setup() {
@@ -54,29 +49,11 @@ function draw() {
   drawCharacter();
   moveCharacter();
 
-  // draw whispers
-  for (let i = whispers.length - 1; i >= 0; i--) {
-    let w = whispers[i];
-
-    // subtle background for whisper text
-    fill(0, 0, 0, 100);
-    let bubbleWidth = textWidth(w.text) + 100;
-    let bubbleHeight = 60;
-    rect(w.x - 40, w.y - bubbleHeight / 2, bubbleWidth, bubbleHeight, 15);
-
-    // mage image beside whisper
-    if (mageImg) {
-      image(mageImg, w.x - 30, w.y - 25, 50, 50);
-    }
-
-    // whisper text
-    fill(220, 255, 230, w.alpha);
-    text(w.text, w.x + 40, w.y);
-
-    // fade out
-    w.alpha -= 2;
-    if (w.alpha <= 0) whispers.splice(i, 1);
+  if (frameCount % spawnInterval === 0 && goblins.length < maxGoblins) {
+    spawnGoblin();
   }
+  drawGoblins();
+
 }
 
 function drawCharacter() {
@@ -93,13 +70,48 @@ function moveCharacter() {
   character.y = constrain(character.y, 0, height);
 }
 
-function mousePressed() {
+function spawnGoblin() {
+  let size = random(70, 130);
+  let margin = 100;
 
-    if (!bgMusic.isPlaying()) {
+  // keep them mostly in the lower half of the screen
+  let x = random(margin, width - margin);
+  let y = random(height / 2, height - margin);
+
+  goblins.push({
+    x: x,
+    y: y,
+    size: size
+  });
+}
+
+function drawGoblins() {
+  if (!goblinImg) return;
+  imageMode(CENTER);
+  for (let g of goblins) {
+    image(goblinImg, g.x, g.y, g.size, g.size);
+  }
+  imageMode(CORNER);
+}
+
+function mousePressed() {
+  for (let i = goblins.length - 1; i >= 0; i--) {
+    let g = goblins[i];
+    // simple hitbox
+    let d = dist(mouseX, mouseY, g.x, g.y);
+    if (d < g.size / 2) {
+      // remove goblin from array (killed)
+      goblins.splice(i, 1);
+    }
+  }
+
+  // music on first click
+  if (!bgMusic.isPlaying()) {
     bgMusic.loop();
     bgMusic.setVolume(0.4);
   }
 
+  // existing whisper behavior
   let randomText = random(whisperTexts);
   let randomX = mouseX + random(-80, 80);
   let randomY = mouseY + random(-50, 50);

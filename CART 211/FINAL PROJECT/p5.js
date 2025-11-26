@@ -15,7 +15,11 @@ let bgMusic;
 let snakeeyesImg;
 
 let whisperTexts = [
-  "...???"
+  "...A crumb of you… that’s all I ask…",
+  "...Let me keep a little trace…",
+  "...Share your habits… traveler…",
+  "...Let me observe… a bit closer…",
+  "...Give me a taste… of what you are…"
 ];
 
 function preload() {
