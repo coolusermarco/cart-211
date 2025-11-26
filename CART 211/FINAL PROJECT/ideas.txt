@@ -4,6 +4,7 @@ I changed my mind, i want now to make a storytelling-rpg like experience, i had 
 Now that i've implemented everything I've been expecting, except for some features like clicking to make a goblin appear and ask for a cookie etc...
 During class ill work on pages 3-5, it'll be quick because I've already got every ressources I need as a template in my two first pages.
 
+
 Pages 3-9 or 4-9 i dont rlly remmeber will be inside a dungeon, or inside a really dark gloomy place, and they'll try to steal ur private informations
 
 PRIVATE INFOS: You need to collect them throughout your adventure, i'll add those features later this week. 
@@ -11,8 +12,12 @@ PRIVATE INFOS: You need to collect them throughout your adventure, i'll add thos
 I hope to make something really fun and metaphorical.
 
 LOT OF INSPO FROM THE BRAND'S "Hound Archive"'s website: https://houndarchives.com/
+AND BASILISK 2000: https://akuma-kira.itch.io/basilisk-2000
 
 USAGE OF GEN AI TO FIX BIG ISSUES WITH THE CANVAS OR POSITIONING OF EACH BUBBLES IMPLEMENTED
+USE OF GEN AI FOR THE PIXEL ARTS
+
+(reminder for me: add a button to turn off the music)
 
 PAGE 1: I wanna implement clicks, mini games within the page, an interactive experience
 reference: https://www.youtube.com/watch?v=16PncZlSNds
@@ -26,5 +31,11 @@ https://www.tutorialspoint.com/css/css_animation_fade_in_up_big.htm
 https://www.sliderrevolution.com/resources/css-animated-gradient/
 
 
-PAGE 4:
+PAGE 4 Dungeon:
 refs goblins: 
+when u click, instead of text appearing, eyes will pop up, kind of snake eyes that'll appear more frequently
+
+PAGE 5 Dungeon p2: still the snake eyes, this time u can hear what they say (harassing u by asking for ur infos)
+
+PAGE 6 Abandonned Garden: this time they'll appear randomly, by popping up, goblins have wings, u can eliminate them by clicking on them
+

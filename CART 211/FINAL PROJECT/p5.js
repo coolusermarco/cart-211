@@ -12,18 +12,10 @@ let characterImg;
 let mageImg;
 let mage2Img;
 let bgMusic;
+let snakeeyesImg;
 
 let whisperTexts = [
-  "The soil hums with old names, best left buried...",
-  "Something watches from beneath the petals.",
-  "You hear it breathing, slow and patient.",
-  "Every path leads somewhere you shouldn't go.",
-  "The flowers whisper, but not in words you know.",
-  "Roots curl around the memories of the lost.",
-  "A shadow stirs where no wind should move.",
-  "You step softly… but the garden already knows you.",
-  "The vines remember more than they should.",
-  "Light bends differently here, as if afraid."
+  "...???"
 ];
 
 function preload() {
@@ -32,6 +24,7 @@ function preload() {
   mage2Img = loadImage("mage.png");
   characterImg = loadImage("boy.png");
   bgMusic = loadSound("musicpage2.mp3");
+  snakeeyesImg = loadImage("snakeeyes.png");
 }
 
 function setup() {
@@ -65,12 +58,12 @@ function draw() {
     rect(w.x - 40, w.y - bubbleHeight / 2, bubbleWidth, bubbleHeight, 15);
 
     // mage image beside whisper
-    if (mageImg) {
-      image(mageImg, w.x - 30, w.y - 25, 50, 50);
+    if (snakeeyesImg) {
+      image(snakeeyesImg, w.x - 30, w.y - 25, 50, 50);
     }
 
     // whisper text
-    fill(220, 255, 230, w.alpha);
+    fill(255, 0, 0, w.alpha);
     text(w.text, w.x + 40, w.y);
 
     // fade out
