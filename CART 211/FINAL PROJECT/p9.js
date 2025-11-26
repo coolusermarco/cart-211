@@ -1,6 +1,7 @@
 // references used: https://www.youtube.com/watch?v=S9tFImRyL-8
 //https://www.youtube.com/watch?v=MA_aFQV9vss
 //https://editor.p5js.org/natayie/sketches/044WMWeri
+//https://www.youtube.com/watch?v=cnRD9o6odjk 
 //GEN AI for the quotations in whisperText (I'll change them soon i had to focus on the rest of the codes)
 
 "use strict";
@@ -12,8 +13,10 @@ let characterImg;
 let mageImg;
 let mage2Img;
 let bgMusic;
+
 let muteButton;
 let musicMuted = false;
+
 let whisperTexts = [
   "The soil hums with old names, best left buried...",
   "Something watches from beneath the petals.",
@@ -28,11 +31,11 @@ let whisperTexts = [
 ];
 
 function preload() {
-  bgImg = loadImage("backgroundp3.jpg");
+  bgImg = loadImage("backgroundp9.jpg");
   mageImg = loadImage("mage.png");
   mage2Img = loadImage("mage.png");
   characterImg = loadImage("boy.png");
-  bgMusic = loadSound("musicpage3.mp3");
+  bgMusic = loadSound("musicpage9.mp3");
 }
 
 function setup() {
@@ -66,7 +69,7 @@ function draw() {
 
   // draw the mage in chat bubble
   if (mage2Img) {
-    image(mage2Img, 300, 500, 300, 250);
+    image(mage2Img, 200, 500, 300, 250);
   }
 
   drawCharacter();

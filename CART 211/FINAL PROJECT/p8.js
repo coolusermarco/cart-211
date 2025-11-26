@@ -6,40 +6,42 @@
 "use strict";
 
 let bgImg;
-let whispers = [];
 let character = { x: 300, y: 500, size: 100, speed: 5 };
 let characterImg;
 let mageImg;
-let mage2Img;
+//let mage2Img;
 let bgMusic;
 let muteButton;
 let musicMuted = false;
+
+// goblins
+let goblins = [];
+let goblinImg;
+let spawnInterval = 180; 
+let maxGoblins = 10;    
+
 let whisperTexts = [
-  "The soil hums with old names, best left buried...",
-  "Something watches from beneath the petals.",
-  "You hear it breathing, slow and patient.",
-  "Every path leads somewhere you shouldn't go.",
-  "The flowers whisper, but not in words you know.",
-  "Roots curl around the memories of the lost.",
-  "A shadow stirs where no wind should move.",
-  "You step softly… but the garden already knows you.",
-  "The vines remember more than they should.",
-  "Light bends differently here, as if afraid."
+  "...A crumb of you… that’s all I ask…",
+  "...Let me keep a little trace…",
+  "...Share your habits… traveler…",
+  "...Let me observe… a bit closer…",
+  "...Give me a taste… of what you are…"
 ];
 
+
 function preload() {
-  bgImg = loadImage("backgroundp3.jpg");
-  mageImg = loadImage("mage.png");
-  mage2Img = loadImage("mage.png");
+  bgImg = loadImage("backgroundp8.jpg");
+  mageImg = loadImage("goblin.png");
+ // mage2Img = loadImage("mage.png");
   characterImg = loadImage("boy.png");
-  bgMusic = loadSound("musicpage3.mp3");
+  bgMusic = loadSound("musicpage8.mp3");
+  goblinImg = loadImage("goblin.png");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
   textFont("Cinzel");
-  textAlign(LEFT, CENTER);
   textSize(22);
 
   // mute button
@@ -61,44 +63,24 @@ function setup() {
 }
 
 function draw() {
-  // draw background
   image(bgImg, 0, 0, width, height);
 
-  // draw the mage in chat bubble
-  if (mage2Img) {
-    image(mage2Img, 300, 500, 300, 250);
-  }
+  //if (mage2Img) {
+    //image(mage2Img, 500, 630, 300, 300);
+  //}
 
   drawCharacter();
   moveCharacter();
 
-  // draw whispers
-  for (let i = whispers.length - 1; i >= 0; i--) {
-    let w = whispers[i];
-
-    // subtle background for whisper text
-    fill(0, 0, 0, 100);
-    let bubbleWidth = textWidth(w.text) + 100;
-    let bubbleHeight = 60;
-    rect(w.x - 40, w.y - bubbleHeight / 2, bubbleWidth, bubbleHeight, 15);
-
-    // mage image beside whisper
-    if (mageImg) {
-      image(mageImg, w.x - 30, w.y - 25, 50, 50);
-    }
-
-    // whisper text
-    fill(220, 255, 230, w.alpha);
-    text(w.text, w.x + 40, w.y);
-
-    // fade out
-    w.alpha -= 2;
-    if (w.alpha <= 0) whispers.splice(i, 1);
+  // spawn goblins regularly
+  if (frameCount % spawnInterval === 0 && goblins.length < maxGoblins) {
+    spawnGoblin();
   }
+
+  drawGoblins();
 }
 
 function drawCharacter() {
-  fill(210, 255, 210, 180);
   image(characterImg, character.x, character.y, character.size, character.size);
 }
 
@@ -107,26 +89,81 @@ function moveCharacter() {
   if (keyIsDown(83)) character.y += character.speed; // S
   if (keyIsDown(65)) character.x -= character.speed; // A
   if (keyIsDown(68)) character.x += character.speed; // D
+
   character.x = constrain(character.x, 0, width);
   character.y = constrain(character.y, 0, height);
 }
 
+
+function spawnGoblin() {
+  let size = random(70, 130);
+  let margin = 120;
+
+  let x = random(margin, width - margin);
+  let y = random(height / 2, height - margin);
+
+  let randomText = random(whisperTexts);
+
+  goblins.push({
+    x: x,
+    y: y,
+    size: size,
+    text: randomText
+  });
+}
+
+// draw all goblins + their chat bubbles
+function drawGoblins() {
+  if (!goblinImg) return;
+
+  for (let g of goblins) {
+    // goblin sprite
+    imageMode(CENTER);
+    image(goblinImg, g.x, g.y, g.size, g.size);
+
+    let txt = g.text;
+    textSize(18);
+    let padding = 16;
+    let bubbleWidth = textWidth(txt) + padding * 2;
+    let bubbleHeight = 45;
+
+    let bubbleX = g.x - bubbleWidth / 2;
+    let bubbleY = g.y - g.size / 2 - bubbleHeight - 10;
+    fill(0, 0, 0, 160);
+    rect(bubbleX, bubbleY, bubbleWidth, bubbleHeight, 10);
+
+    if (mageImg) {
+      imageMode(CORNER);
+      image(mageImg, bubbleX + 5, bubbleY + 5, 32, 32);
+    }
+
+    // text inside bubble
+    fill(220, 255, 230);
+    textAlign(LEFT, CENTER);
+    text(txt, bubbleX + 45, bubbleY + bubbleHeight / 2);
+  }
+
+  // reset text settings (just in case)
+  textAlign(LEFT, CENTER);
+  textSize(22);
+  imageMode(CORNER);
+}
+
 function mousePressed() {
+  // kill goblin if clicked
+  for (let i = goblins.length - 1; i >= 0; i--) {
+    let g = goblins[i];
+    let d = dist(mouseX, mouseY, g.x, g.y);
+    if (d < g.size / 2) {
+      goblins.splice(i, 1);
+      break;
+    }
+  }
+
   if (!bgMusic.isPlaying() && !musicMuted) {
     bgMusic.loop();
     bgMusic.setVolume(0.4);
   }
-
-  let randomText = random(whisperTexts);
-  let randomX = mouseX + random(-80, 80);
-  let randomY = mouseY + random(-50, 50);
-
-  whispers.push({
-    text: randomText,
-    x: randomX,
-    y: randomY,
-    alpha: 255
-  });
 }
 
 //mute button

@@ -13,6 +13,9 @@ let mageImg;
 let mage2Img;
 let bgMusic;
 
+let muteButton;
+let musicMuted = false;
+
 let whisperTexts = [
   "The soil hums with old names, best left buried...",
   "Something watches from beneath the petals.",
@@ -40,6 +43,23 @@ function setup() {
   textFont("Cinzel");
   textAlign(LEFT, CENTER);
   textSize(22);
+
+  // mute button
+  
+  muteButton = createButton("Mute Music");
+
+  muteButton.style("position", "absolute");
+  muteButton.style("z-index", "9999");
+  muteButton.style("padding", "10px 20px");
+  muteButton.style("font-size", "16px");
+  muteButton.style("background", "rgba(0,0,0,0.6)");
+  muteButton.style("color", "#fff");
+  muteButton.style("border", "2px solid #fff");
+  muteButton.style("border-radius", "8px");
+  muteButton.style("cursor", "pointer");
+
+  muteButton.position(20, 20);
+  muteButton.mousePressed(toggleMusic);
 }
 
 function draw() {
@@ -95,7 +115,7 @@ function moveCharacter() {
 
 function mousePressed() {
 
-    if (!bgMusic.isPlaying()) {
+  if (!bgMusic.isPlaying() && !musicMuted) {
     bgMusic.loop();
     bgMusic.setVolume(0.4);
   }
@@ -110,6 +130,24 @@ function mousePressed() {
     y: randomY,
     alpha: 255
   });
+}
+
+//mute button
+function toggleMusic() {
+  if (musicMuted) {
+    //ON
+    if (!bgMusic.isPlaying()) {
+      bgMusic.loop();
+      bgMusic.setVolume(0.4);
+    }
+    muteButton.html("Mute Music");
+    musicMuted = false;
+  } else {
+    //OFF
+    bgMusic.stop();
+    muteButton.html("Unmute Music");
+    musicMuted = true;
+  }
 }
 
 function windowResized() {

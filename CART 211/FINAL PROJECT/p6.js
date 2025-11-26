@@ -11,12 +11,13 @@ let characterImg;
 let mageImg;
 let mage2Img;
 let bgMusic;
-
+let muteButton;
+let musicMuted = false;
 // goblins
 let goblins = [];
 let goblinImg;
-let spawnInterval = 90; // how often they appear (frames)
-let maxGoblins = 10;    // max goblins on screen
+let spawnInterval = 90; 
+let maxGoblins = 10;    
 
 let whisperTexts = [
   "...A crumb of you… that’s all I ask…",
@@ -32,7 +33,7 @@ function preload() {
   mageImg = loadImage("goblin.png");
   mage2Img = loadImage("mage.png");
   characterImg = loadImage("boy.png");
-  bgMusic = loadSound("musicpage2.mp3");
+  bgMusic = loadSound("musicpage6.mp3");
   goblinImg = loadImage("goblin.png");
 }
 
@@ -41,12 +42,28 @@ function setup() {
   noStroke();
   textFont("Cinzel");
   textSize(22);
+
+  // mute button
+  
+  muteButton = createButton("Mute Music");
+
+  muteButton.style("position", "absolute");
+  muteButton.style("z-index", "9999");
+  muteButton.style("padding", "10px 20px");
+  muteButton.style("font-size", "16px");
+  muteButton.style("background", "rgba(0,0,0,0.6)");
+  muteButton.style("color", "#fff");
+  muteButton.style("border", "2px solid #fff");
+  muteButton.style("border-radius", "8px");
+  muteButton.style("cursor", "pointer");
+
+  muteButton.position(20, 20);
+  muteButton.mousePressed(toggleMusic);
 }
 
 function draw() {
   image(bgImg, 0, 0, width, height);
 
-  // static mage in the corner
   if (mage2Img) {
     image(mage2Img, 500, 630, 300, 300);
   }
@@ -76,7 +93,7 @@ function moveCharacter() {
   character.y = constrain(character.y, 0, height);
 }
 
-// spawn one goblin at a random place, with its own text
+
 function spawnGoblin() {
   let size = random(70, 130);
   let margin = 120;
@@ -103,7 +120,6 @@ function drawGoblins() {
     imageMode(CENTER);
     image(goblinImg, g.x, g.y, g.size, g.size);
 
-    // chat bubble above goblin
     let txt = g.text;
     textSize(18);
     let padding = 16;
@@ -112,12 +128,9 @@ function drawGoblins() {
 
     let bubbleX = g.x - bubbleWidth / 2;
     let bubbleY = g.y - g.size / 2 - bubbleHeight - 10;
-
-    // bubble background
     fill(0, 0, 0, 160);
     rect(bubbleX, bubbleY, bubbleWidth, bubbleHeight, 10);
 
-    // small mage icon on left side of bubble (optional)
     if (mageImg) {
       imageMode(CORNER);
       image(mageImg, bubbleX + 5, bubbleY + 5, 32, 32);
@@ -142,15 +155,32 @@ function mousePressed() {
     let d = dist(mouseX, mouseY, g.x, g.y);
     if (d < g.size / 2) {
       goblins.splice(i, 1);
-      // stop after killing one, so one click removes only one goblin
       break;
     }
   }
 
-  // start music on first click
-  if (!bgMusic.isPlaying()) {
+  if (!bgMusic.isPlaying() && !musicMuted) {
     bgMusic.loop();
     bgMusic.setVolume(0.4);
+  }
+  }
+
+
+//mute button
+function toggleMusic() {
+  if (musicMuted) {
+    //ON
+    if (!bgMusic.isPlaying()) {
+      bgMusic.loop();
+      bgMusic.setVolume(0.4);
+    }
+    muteButton.html("Mute Music");
+    musicMuted = false;
+  } else {
+    //OFF
+    bgMusic.stop();
+    muteButton.html("Unmute Music");
+    musicMuted = true;
   }
 }
 
